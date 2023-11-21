@@ -1,7 +1,16 @@
 // import Button from "./components/Button"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";  
 
-import { useState } from "react"
-import Button from "./components/Button"
+import { useEffect, useState } from "react"
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+
+// import { useState } from "react"
+// import Button from "./components/Button"
 
 // import Text1 from "./components/text"
 function App() {
@@ -19,18 +28,24 @@ function App() {
 //   setCount(count - 1)
 //   }
 // }
-const [name,setName] = useState("")
-const [data,setData] = useState([])
-console.log(name)
+// const [name,setName] = useState("")
+// const [data,setData] = useState([])
+// console.log(name)
 
-const clickFunc = () => {
-setData(prev => ([...prev,name]))
-setName('');
-}
-const targetFunc = (e) => {
-  setName(e.target.value)
-}
-console.log(data)
+// const clickFunc = () => {
+// setData(prev => ([...prev,name]))
+// setName('');
+// }
+// const targetFunc = (e) => {
+//   setName(e.target.value)
+// }
+// console.log(data)
+// const [name,setName] = useState("enis")
+// useEffect(() => {
+//   setTimeout(() => {
+//     setName("isim güncellendi")
+//   },4000)
+// },[])
   return (
     // <>
     //   <Text1 number={"1"} name={"Enis"}></Text1> 
@@ -49,16 +64,25 @@ console.log(data)
     // <Button name={"Artır"} onClick={() => setCount(count + 1)}></Button> */}
     // {/* <button onClick={() => setCount(count+1)}>Artır</button> */}
     // </>
+    // <>
+    // <input value={name} type="text" onChange={targetFunc}></input>
+    // <button onClick={clickFunc}>TIKLA</button>
+    // <div>  
+    // {
+    // data.map((dt,i) => (
+    //   <div key={i}>{dt}</div>
+    // ))
+    // }
+    // </div>
+    // </>
     <>
-    <input value={name} type="text" onChange={targetFunc}></input>
-    <button onClick={clickFunc}>TIKLA</button>
-    <div>  
-    {
-    data.map((dt,i) => (
-      <div key={i}>{dt}</div>
-    ))
-    }
-    </div>
+    {/* {name} */}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/detail/:id" element={<Detail></Detail>}></Route>
+      </Routes>
+    </Router>
     </>
   )
 }
